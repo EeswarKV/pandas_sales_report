@@ -34,18 +34,24 @@ class Sales:
 
     # create a data set from database to generate graphs
     def generic_product_set(self):
-    try:
-        self.sales_data['Total'] = self.sales_data['quantity_sold'] * self.sales_data['price']
-        self.sales_data['date_of_sale'] = pd.to_datetime(self.sales_data.date_of_sale, format='%Y-%m-%d')
-        self.total_prices_per_product = self.sales_data.groupby('product_name')['Total'].sum().to_dict()
-        self.total_prices_per_year = self.sales_data.groupby('product_name')['Total'].mean().to_dict()
-        self.average_prices = self.sales_data.groupby('product_name')['Total'].mean().to_dict()
-        self.sales_distribution = self.sales_data.groupby('product_name')['quantity_sold'].mean().to_dict()
-        logging.info("Sales processed data set created successfully.")
-        self.drawPlotChart()
-    except Exception as e:
-        logging.error(
-            "An error occurred while generating the data set: " + str(e))
+        try:
+            self.sales_data['Total'] = self.sales_data['quantity_sold'] * \
+                self.sales_data['price']
+            self.sales_data['date_of_sale'] = pd.to_datetime(
+                self.sales_data.date_of_sale, format='%Y-%m-%d')
+            self.total_prices_per_product = self.sales_data.groupby('product_name')[
+                'Total'].sum().to_dict()
+            self.total_prices_per_year = self.sales_data.groupby(
+                'product_name')['Total'].mean().to_dict()
+            self.average_prices = self.sales_data.groupby(
+                'product_name')['Total'].mean().to_dict()
+            self.sales_distribution = self.sales_data.groupby(
+                'product_name')['quantity_sold'].mean().to_dict()
+            logging.info("Sales processed data set created successfully.")
+            self.drawPlotChart()
+        except Exception as e:
+            logging.error(
+                "An error occurred while generating the data set: " + str(e))
 
 
     # draw plot charts for each data
