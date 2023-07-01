@@ -11,7 +11,7 @@ def sales_info():
 
 
 def test_get_sales_data(sales_info):
-    sales_info.get_sales_data('salesreport/src/input/sales_data.csv')
+    sales_info.get_sales_data('src/input/sales_data.csv')
     assert len(sales_info.sales_data) > 0
 
 
