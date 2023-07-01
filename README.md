@@ -23,7 +23,7 @@ Clone the repository using the following command:
 
 ## Step 2: Install Dependencies
 
-Navigate to sales-report package and make sure to install the dependencies specified in the requirements.txt file. You can install them using the following command:
+Navigate to <em><strong>salesreport</em></strong> package and make sure to install the dependencies specified in the requirements.txt file. You can install them using the following command:
 <br><em><strong>pip install -r requirements.txt</em></strong>
 
 ## Step 3: Run main.py
