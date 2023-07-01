@@ -1,0 +1,22 @@
+# Ignore Python virtual environment files
+venv/
+
+# Ignore compiled Python files
+*.pyc
+
+# Ignore the output directory
+salesreport/output/
+
+# Ignore sensitive or local configuration files
+config.ini
+
+# Ignore Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# Ignore editor-specific temporary files
+.vscode/
+.idea/
+
+# Ignore cache and log files
+__pycache__/
+log/
