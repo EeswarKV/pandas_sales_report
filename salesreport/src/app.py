@@ -64,7 +64,7 @@ class Sales:
     # draw plot charts for each data
     def drawPlotChart(self):
         # Create the "output" folder
-        output_folder = 'salesreport/output'
+        output_folder = 'output'
         if not os.path.exists(output_folder):
             os.makedirs(output_folder)
         try:
