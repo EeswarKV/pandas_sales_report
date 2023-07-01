@@ -23,13 +23,13 @@ Clone the repository using the following command:
 
 ## Step 2: Install Dependencies
 
-Make sure to install the dependencies specified in the requirements.txt file. You can install them using the following command:
+Navigate to sales-report package and make sure to install the dependencies specified in the requirements.txt file. You can install them using the following command:
 <br><em><strong>pip install -r requirements.txt</em></strong>
 
-## Step 3: Run app.py
+## Step 3: Run main.py
 
-Navigate to the project directory and run the 'app.py' script:
-<br><em><strong>python app.py</em></strong>
+Navigate to the project directory and run the 'main.py' script:
+<br><em><strong>python main.py</em></strong>
 <br><br>This will execute the script and generate the sales report.<br><br>
 ![sales report](https://github.com/EeswarKV/pandas_sales_report/blob/main/sample_report.png?raw=true)
 
