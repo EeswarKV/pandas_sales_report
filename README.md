@@ -31,7 +31,7 @@ Navigate to sales-report package and make sure to install the dependencies speci
 Navigate to the project directory and run the 'main.py' script:
 <br><em><strong>python main.py</em></strong>
 <br><br>This will execute the script and generate the sales report.<br><br>
-![sales report](https://github.com/EeswarKV/pandas_sales_report/blob/main/sample_report.png?raw=true)
+![sales report]([https://github.com/EeswarKV/pandas_sales_report/blob/main/sample_report.png?raw=true])
 
 ## Step 4: Check the Generated Sales Report in PDF
 
