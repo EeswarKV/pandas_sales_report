@@ -38,7 +38,7 @@ class Sales:
         self.sales_distribution = {}
 
     # get sales info from csv and update to db
-    def get_sales_data(self, csv_file=relative_path):  # Updated file path
+    def get_sales_data(self, csv_file=absolute_path):  # Updated file path
         try:
             logging.info(
                 "Initiating the process of sales data from csv file to store in the database.")
