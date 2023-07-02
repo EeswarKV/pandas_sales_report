@@ -1,7 +1,8 @@
 version: 2
 jobs:
   build:
-    working_directory: /tmp
+    runs-on: ubuntu-latest
+
     steps:
       - uses: actions/checkout@v3
 
@@ -42,12 +43,3 @@ jobs:
 
       - name: Store artifact file
         uses: actions/upload-artifact@v2
-        with:
-          name: artifact-file
-          path: /tmp/art-1
-
-      - name: Store artifact directory
-        uses: actions/upload-artifact@v2
-        with:
-          name: artifact-directory
-          path: /tmp/artifacts
