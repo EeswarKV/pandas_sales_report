@@ -36,6 +36,5 @@ jobs:
       run: |
         pytest --cov=salesreport
     - name: Generate coverage report
-      working-directory: salesreport
       run: |
         coverage html
