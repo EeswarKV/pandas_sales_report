@@ -7,6 +7,18 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import logging
 
+# Get the current working directory
+current_dir = os.getcwd()
+
+# Relative path to the file
+relative_path = 'src/input/sales_data.csv'
+
+# Get the absolute path by joining the current directory and the relative path
+absolute_path = os.path.join(current_dir, relative_path)
+
+# Print the absolute path
+print(absolute_path)
+
 # Configure logging
 # Create the "log" folder
 output_folder = 'log'
@@ -26,7 +38,7 @@ class Sales:
         self.sales_distribution = {}
 
     # get sales info from csv and update to db
-    def get_sales_data(self, csv_file='src/input/sales_data.csv'):  # Updated file path
+    def get_sales_data(self, csv_file=relative_path):  # Updated file path
         try:
             logging.info(
                 "Initiating the process of sales data from csv file to store in the database.")
