@@ -1,58 +1,53 @@
-name: Python application
-
-on:
-  push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
-
-permissions:
-  contents: read
-
+version: 2
 jobs:
   build:
-
-    runs-on: ubuntu-latest
-
-    steps:
-    - uses: actions/checkout@v3
-    - name: Set up Python 3.10
-      uses: actions/setup-python@v3
-      with:
-        python-version: "3.10"
-    - name: Install dependencies
-      run: |
-        python -m pip install --upgrade pip
-        pip install flake8 pytest pytest-cov matplotlib pandas
-        if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
-    - name: Lint with flake8
-      run: |
-        # stop the build if there are Python syntax errors or undefined names
-        flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
-        # exit-zero treats all errors as warnings. The GitHub editor is 127 chars wide
-        flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
-    - name: Test with pytest and collect coverage
-      working-directory: salesreport
-      run: |
-        pytest --cov=salesreport
-    - name: Creating Dummy Artifacts
-      working-directory: salesreport
-      run: |
-        coverage html
-
-  build_artifacts:
     working_directory: /tmp
     steps:
-      - run:
-          name: Creating Dummy Artifacts
-          command: |
-            echo "my artifact file" > /tmp/art-1;
-            mkdir /tmp/artifacts;
-            echo "my artifact files in a dir" > /tmp/artifacts/art-2;
+      - uses: actions/checkout@v3
 
-      - store_artifacts:
+      - name: Set up Python 3.10
+        uses: actions/setup-python@v3
+        with:
+          python-version: "3.10"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install flake8 pytest pytest-cov matplotlib pandas
+          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+
+      - name: Lint with flake8
+        run: |
+          flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
+          flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
+
+      - name: Test with pytest and collect coverage
+        working-directory: salesreport
+        run: |
+          pytest --cov=salesreport
+
+      - name: Generate coverage report
+        working-directory: salesreport
+        run: |
+          coverage html
+        env:
+          pythonLocation: /opt/hostedtoolcache/Python/3.10.12/x64
+          LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.10.12/x64/lib
+
+      - name: Creating Dummy Artifacts
+        run: |
+          echo "my artifact file" > /tmp/art-1;
+          mkdir /tmp/artifacts;
+          echo "my artifact files in a dir" > /tmp/artifacts/art-2;
+
+      - name: Store artifact file
+        uses: actions/upload-artifact@v2
+        with:
+          name: artifact-file
           path: /tmp/art-1
-          destination: artifact-file
 
-      - store_artifacts:
+      - name: Store artifact directory
+        uses: actions/upload-artifact@v2
+        with:
+          name: artifact-directory
           path: /tmp/artifacts
