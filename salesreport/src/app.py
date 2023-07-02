@@ -7,18 +7,6 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import logging
 
-# Get the current working directory
-current_dir = os.getcwd()
-
-# Relative path to the file
-relative_path = 'src/input/sales_data.csv'
-
-# Get the absolute path by joining the current directory and the relative path
-absolute_path = os.path.join(current_dir, relative_path)
-
-# Print the absolute path
-print(absolute_path)
-
 # Configure logging
 # Create the "log" folder
 output_folder = 'log'
@@ -38,11 +26,11 @@ class Sales:
         self.sales_distribution = {}
 
     # get sales info from csv and update to db
-    def get_sales_data(self, csv_file=absolute_path):  # Updated file path
+    def get_sales_data(self, path='src/input/sales_data.csv'):  # Updated file path
         try:
             logging.info(
                 "Initiating the process of sales data from csv file to store in the database.")
-            self.sales_data = pd.read_csv(csv_file).dropna()
+            self.sales_data = pd.read_csv(path).dropna()
             ad.set_data_to_db(self.sales_data.to_dict(orient='records'))
         except FileNotFoundError:
             logging.error("Error: sales_data.csv file not found.")
@@ -51,7 +39,7 @@ class Sales:
                 "An error occurred while getting sales data: %s", str(e))
 
     # create a data set from database to generate graphs
-    def generic_product_set(self, table_prefix='', table_name ='salestable'):
+    def generic_product_set(self, table_prefix='', table_name='salestable'):
         try:
             product_set = ad.retrieve_info_from_table(
                 'sales', f"{table_prefix}{table_name}")

@@ -40,14 +40,9 @@ def test_set_processed_info_to_db(sales_info):
     sales_info.set_processed_info_to_db(
         dbname='test_sales', table_prefix='test_')
 
-    # You can add assertions to check if the data is stored in the database
-
-
 def test_retrieve_info_from_table_data(sales_info):
     sales_info.retrieve_info_from_table_data(
         dbname='test_sales', table_prefix='test_')
-
-    # You can add assertions to check the retrieved data from the tables if needed
 
 
 # Run the tests
