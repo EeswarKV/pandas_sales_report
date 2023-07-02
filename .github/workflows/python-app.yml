@@ -35,10 +35,11 @@ jobs:
       working-directory: salesreport
       run: |
         pytest --cov=salesreport
-    - name: Generate coverage report
-      working-directory: salesreport
-      run: |
-        coverage html
-      env:
-        pythonLocation: /opt/hostedtoolcache/Python/3.10.12/x64
-        LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.10.12/x64/lib
+    - name: Go coverage report
+      # You may pin to the exact commit or the version.
+      # uses: ncruces/go-coverage-report@c73687d039237f4c6448ffbe433a659ea76ce256
+      uses: ncruces/go-coverage-report@v0.1.7
+      with:
+        # Generate an HTML coverage report.
+        report: true
+        # Generate a coverage over time chart.
